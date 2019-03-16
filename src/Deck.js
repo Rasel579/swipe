@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { View, Animated, PanResponder, Dimensions } from 'react-native';
 
-const SCREEN_WIDTH =Dimensions.get('window').width;
+const SCREEN_WIDTH = Dimensions.get('window').width; //take a width of device
+const SWIPE_THRESHOLD = 0.25*SCREEN_WIDTH;
 
 class Deck extends Component{
 
@@ -13,11 +14,15 @@ class Deck extends Component{
         const panResponder = PanResponder.create({ 
            onStartShouldSetPanResponder: () => true,
            onPanResponderMove: (event, gesture) => {
-               console.log(event, gesture);
                position.setValue({ x: gesture.dx , y: gesture.dy });
            },
-           onPanResponderRelease: () => {
-               this.resetPosition();
+           onPanResponderRelease: (event, gesture) => {
+               if (gesture.dx > SWIPE_THRESHOLD){
+                   console.log('Like');
+               } else if (gesture.dx < - SWIPE_THRESHOLD){
+                   console.log('DisLike');
+               } else { this.resetPosition();
+            }
            }
         });
         this.state = { panResponder, position };
