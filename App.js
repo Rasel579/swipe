@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Dimensions } from 'react-native';
 import { Card, Button } from 'react-native-elements';
 import Deck from './src/Deck';
 
@@ -13,6 +13,8 @@ const DATA = [
   { id: 7, text: 'Card #7', uri: 'http://imgs.abduzeedo.com/files/paul0v2/unsplash/unsplash-09.jpg' },
   { id: 8, text: 'Card #8', uri: 'http://imgs.abduzeedo.com/files/paul0v2/unsplash/unsplash-01.jpg' },
 ];
+
+
 
 export default class App extends React.Component {
  
@@ -56,7 +58,7 @@ export default class App extends React.Component {
       <View style={styles.container}>
        <Deck renderCard={this.renderCard} 
               data={DATA}
-              renderNoMoreCards={this.renderNoMoreCards}
+              renderNoMoreCards={this.renderNoMoreCards}  
               />
       </View>
     );
@@ -67,6 +69,6 @@ const styles = {
   container: {
     flex: 1,
     backgroundColor: '#fff'
-  } 
+  }
 };
 

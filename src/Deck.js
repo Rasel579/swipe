@@ -8,6 +8,7 @@ import { View,
 from 'react-native';
 
 const SCREEN_WIDTH = Dimensions.get('window').width; //take a width of device
+const SCREEN_HEIGHT = Dimensions.get('window').height;
 const SWIPE_THRESHOLD = 0.25*SCREEN_WIDTH;
 const SWIPE_OUT_DURAION = 250;
 
@@ -41,6 +42,12 @@ class Deck extends Component{
            }
         });
         this.state = { panResponder, position, index: 0 };
+    }
+     
+    componentWillReceiveProps(nextProps){
+      if( nextProps.data !== this.props.data){
+          this.setState({ index: 0});
+      }
     }
 
     componentWillUpdate(){
@@ -128,10 +135,12 @@ const styles = {
     cardStyle: (i) =>({
       position: 'absolute',
       width: SCREEN_WIDTH,
+      height: SCREEN_HEIGHT,
+      justifyContent: 'center',
       zIndex: i* -1   
     })
 
 };
 
-
+   
 export default Deck;
