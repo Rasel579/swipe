@@ -8,6 +8,11 @@ const SWIPE_OUT_DURAION = 250;
 
 class Deck extends Component{
 
+    static defaultProps = {
+        onSwipeRight: () => {},
+        onSwipeLeft: () => {}
+    }
+
     constructor(props){
         super(props);
 
@@ -87,7 +92,7 @@ class Deck extends Component{
         return(
             <View>
                 {this.renderCards()}
-            </View>
+            </View> 
         );
     }
 }
