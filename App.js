@@ -46,7 +46,7 @@ export default class App extends React.Component {
            <Button 
              title="Get More"
              backgroundColor="#03A9F4"
-           />
+           /> 
       </Card>
     );
   }
@@ -60,7 +60,7 @@ export default class App extends React.Component {
               />
       </View>
     );
-  }
+  } 
 } 
 
 const styles = {
